@@ -7,15 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>ok</title>
-    {{-- <link href="{{ get_icon() }}" rel="icon">
-    <title>{{ get_option('company_name') }}</title> --}}
-    <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="img/logo/logo.png" rel="icon">
+    <title>RuangAdmin - DataTables</title>
+  <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/css/ruang-admin.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
         integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+    <link href="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('backend/vendor/style.css') }}">
 </head>
+
 
 <body id="page-top">
     <div id="wrapper">
@@ -23,15 +26,13 @@
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img src="{{ asset('/default/default-icon.png') }}">
+                    <img src="img/logo/logo2.png">
                 </div>
-
-                {{-- <div class="sidebar-brand-text mx-3"> {{ _lang('Root Deves') }}</div> --}}
-                {{-- <div class="sidebar-brand-text mx-3"> {{ subho() }}</div> --}}
+                <div class="sidebar-brand-text mx-3">RuangAdmin</div>
             </a>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -40,43 +41,10 @@
                 Features
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('live/view') }} ">
-                    <i class="fa-solid fa-tv"></i>
-                    <span>Live Matches List</span>
+                <a class="nav-link" href="{{url('live/view')}}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Indian Premierleague</span>
                 </a>
-            </li>
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
-                    aria-expanded="true" aria-controls="collapseTable">
-                    <i class="fa-solid fa-gears"></i>
-                    <span>Administration</span>
-                </a>
-                <div id="collapseTable" class="collapse" aria-labelledby="headingTable"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">General Settings</a>
-                        {{-- {{ Route('generel') }} --}}
-                        <a class="collapse-item" href="simple-tables.html">App Settings</a>
-                        <a class="collapse-item" href="datatables.html">Database Backup</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm"
-                    aria-expanded="true" aria-controls="collapseForm">
-                    <i class="fab fa-fw fa-wpforms"></i>
-                    <span>Forms</span>
-                </a>
-                <div id="collapseForm" class="collapse" aria-labelledby="headingForm"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Forms</h6>
-                        <a class="collapse-item" href="form_basics.html">Form Basics</a>
-                        <a class="collapse-item" href="form_advanceds.html">Form Advanceds</a>
-                    </div>
-                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
@@ -97,6 +65,36 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm"
+                    aria-expanded="true" aria-controls="collapseForm">
+                    <i class="fab fa-fw fa-wpforms"></i>
+                    <span>Forms</span>
+                </a>
+                <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Forms</h6>
+                        <a class="collapse-item" href="form_basics.html">Form Basics</a>
+                        <a class="collapse-item" href="form_advanceds.html">Form Advanceds</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
+                    aria-expanded="true" aria-controls="collapseTable">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span>
+                </a>
+                <div id="collapseTable" class="collapse " aria-labelledby="headingTable"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Tables</h6>
+                        <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
+                        <a class="collapse-item " href="datatables.html">DataTables</a>
+                    </div>
+                </div>
+            </li>
+
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
                 Examples
@@ -107,8 +105,7 @@
                     <i class="fas fa-fw fa-columns"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePage" class="collapse" aria-labelledby="headingPage"
-                    data-parent="#accordionSidebar">
+                <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Example Pages</h6>
                         <a class="collapse-item" href="login.html">Login</a>
@@ -217,8 +214,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="backend/img/man.png" style="max-width: 60px"
-                                            alt="">
+                                        <img class="rounded-circle" src="img/man.png" style="max-width: 60px" alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -230,20 +226,17 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="backend/img/girl.png" style="max-width: 60px"
-                                            alt="">
+                                        <img class="rounded-circle" src="img/girl.png" style="max-width: 60px" alt="">
                                         <div class="status-indicator bg-default"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because
-                                            someone
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
                                             told me that people
                                             say this to all dogs, even if they aren't good...</div>
                                         <div class="small text-gray-500">Jaenab · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More
-                                    Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -297,11 +290,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="{{ asset('backend/img/boy.png') }}"
-                                    style="max-width: 60px">
-                                <span
-                                    class="ml-2 d-none d-lg-inline text-white small"></span>
-                                    {{-- {{ Auth::user()->first_name . '.' . Auth::user()->last_name }} --}}
+                                <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
+                                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
@@ -323,31 +313,33 @@
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
-                               {{-- <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                                Logout
-                            </a>
-                            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form> --}}
                             </div>
                         </li>
                     </ul>
                 </nav>
                 <!-- Topbar -->
-
                 <!-- Container Fluid-->
-                <div class="container-fluid" id="container-wrapper">
+                {{-- <div class="container-fluid" id="container-wrapper">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">DataTables</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="./">Home</a></li>
+                            <li class="breadcrumb-item">Tables</li>
+                            <li class="breadcrumb-item active" aria-current="page">DataTables</li>
+                        </ol>
+                    </div>
 
-                    @yield('content')
-                    <!--Row-->
 
-                    {{-- <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <p>Do you like this template ? you can download from <a
-                                    href="https://github.com/indrijunanda/RuangAdmin" class="btn btn-primary btn-sm"
-                                    target="_blank"><i class="fab fa-fw fa-github"></i>&nbsp;GitHub</a></p>
+                    <!-- Documentation Link -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>DataTables is a third party plugin that is used to generate the demo table below. For
+                                more information
+                                about DataTables, please visit the official <a href="https://datatables.net/"
+                                    target="_blank">DataTables
+                                    documentation.</a></p>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <!-- Modal Logout -->
                     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
@@ -356,8 +348,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                                    <button type="button" class="close" data-dismiss="modal"
-                                        aria-label="Close">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -367,64 +358,59 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-primary"
                                         data-dismiss="modal">Cancel</button>
-                                    {{-- <a href="login.html" class="btn btn-primary">Logout</a> --}}
-                                    <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                                        Logout
-                                    </a>
-                                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
+                                    <a href="login.html" class="btn btn-primary">Logout</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
                 <!---Container Fluid-->
             </div>
 
+            <div class="container">
+                @yield('content')
+            </div>
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>copyright &copy; <script>
+                                document.write(new Date().getFullYear());
+                            </script> - developed by
+                            <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
+                        </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer -->
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>copyright &copy;
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script> - developed by
-                    <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
-                </span>
-            </div>
-
-        </div>
-
-        <div class="container my-auto py-2">
-            <div class="copyright text-center my-auto">
-                <span>copyright &copy;
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script> - distributed by
-                    <b><a href="https://themewagon.com/" target="_blank">themewagon</a></b>
-                </span>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer -->
 
     <!-- Scroll to top -->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
+    <script>{{ asset('public/backend/js/ruang-admin.min.js') }}</script>
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('backend/js/ruang-admin.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/chart.js/Chart.js') }}"></script>
-    <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
-    @yield('js_content')
+    {{-- <script src="{{ asset('backend/vendor/js/ruang-admin.min.js') }}"></script> --}}
+    <!-- Page level plugins -->
+    <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    @yield('js_script')
+    <!-- Page level custom scripts -->
+    // <script>
+    //     $(document).ready(function () {
+    //   $('#dataTable').DataTable(); // ID From dataTable
+    //   $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    // });
+    // </script>
+
 </body>
 
 </html>
