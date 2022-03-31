@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <link href="{{ get_icon() }}" rel="icon">
-    <title>{{ get_option('company_name') }}</title>
+    <title>ok</title>
+    {{-- <link href="{{ get_icon() }}" rel="icon">
+    <title>{{ get_option('company_name') }}</title> --}}
     <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/css/ruang-admin.min.css') }}" rel="stylesheet">
@@ -56,7 +56,8 @@
                 <div id="collapseTable" class="collapse" aria-labelledby="headingTable"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ Route('generel') }}">General Settings</a>
+                        <a class="collapse-item" href="">General Settings</a>
+                        {{-- {{ Route('generel') }} --}}
                         <a class="collapse-item" href="simple-tables.html">App Settings</a>
                         <a class="collapse-item" href="datatables.html">Database Backup</a>
                     </div>
@@ -299,7 +300,8 @@
                                 <img class="img-profile rounded-circle" src="{{ asset('backend/img/boy.png') }}"
                                     style="max-width: 60px">
                                 <span
-                                    class="ml-2 d-none d-lg-inline text-white small">{{ Auth::user()->first_name . '.' . Auth::user()->last_name }}</span>
+                                    class="ml-2 d-none d-lg-inline text-white small"></span>
+                                    {{-- {{ Auth::user()->first_name . '.' . Auth::user()->last_name }} --}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
