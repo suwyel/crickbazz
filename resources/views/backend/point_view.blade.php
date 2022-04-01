@@ -43,7 +43,7 @@
                         @foreach ($point as $point )
                         <tr>
                             <td>{{$point->id}}</td>
-                            <td><img src="{{ asset('public/Image/'.$point->img) }}" alt=""></td>
+                            <td><img src="{{ asset('public/uploads/images/users/'.$point->img) }}" alt=""></td>
                             <td>{{$point->team}}</td>
                             <td>{{$point->nat}}</td>
                             <td>{{$point->won}}</td>

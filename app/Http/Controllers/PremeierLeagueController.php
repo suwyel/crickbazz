@@ -91,24 +91,24 @@ class PremeierLeagueController extends Controller
         $pointtable->nrr = $Request->nrr;
         $pointtable->img = $Request->img;
 
-        if ($Request->hasFile('img')) {
-            $file = $Request->file('img');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('public/Image'), $filename);
-            $pointtable['img'] = $filename;
-        }
         // if ($Request->hasFile('img')) {
-        //     $image = $Request->file('img');
-        //     $ImageName = time() . '.' . $image->getClientOriginalExtension();
-        //     \Image::make($image)->resize(300, 300)->save(base_path('public/uploads/images/users/') . $ImageName);
-        //     $pointtable->pointtable = 'users/' . $ImageName;
+        //     $file = $Request->file('img');
+        //     $filename = date('YmdHi') . $file->getClientOriginalName();
+        //     $file->move(public_path('public/Image'), $filename);
+        //     $pointtable['img'] = $filename;
         // }
+        if ($Request->hasFile('img')) {
+            $image = $Request->file('img');
+            $ImageName = time() . '.' . $image->getClientOriginalExtension();
+            \Image::make($image)->resize(300, 300)->save(base_path('public/uploads/images/users/') . $ImageName);
+            $pointtable->pointtable = 'users/' . $ImageName;
+        }
         $pointtable->save();
 
 
 
         if (!$Request->ajax()) {
-            return redirect('leg/live/view')->with('success', 'Information has been added.');
+            return redirect('/point/view')->with('success', 'Information has been added.');
         } else {
             return response()->json(['result' => 'error', 'redirect' => back(), 'message' => 'Information not added .']);
             // url('live_matches')
