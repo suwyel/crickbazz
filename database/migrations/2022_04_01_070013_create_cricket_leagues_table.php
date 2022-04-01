@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('live_matcs', function (Blueprint $table) {
+        Schema::create('cricket_leagues', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('class_id');
-            // $table->string('name');
-
-            // $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->string('tem_name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('live_matcs');
+        Schema::dropIfExists('cricket_leagues');
     }
 };

@@ -41,9 +41,15 @@
                 Features
             </div>
             <li class="nav-item">
+                <a class="nav-link" href="{{url('/point/view')}}">
+                    <i class="fas fa-fw fa-palette"></i>
+                    <span>Indian Premier league</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{url('live/view')}}">
                     <i class="fas fa-fw fa-palette"></i>
-                    <span>Indian Premierleague</span>
+                    <span>match</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -374,7 +380,7 @@
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
+                <div class=" my-auto">
                     <div class="copyright text-center my-auto">
                         <span>copyright &copy; <script>
                                 document.write(new Date().getFullYear());
@@ -392,7 +398,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <script>{{ asset('public/backend/js/ruang-admin.min.js') }}</script>
+    {{-- <script>{{ asset('public/backend/js/ruang-admin.min.js') }}</script> --}}
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>

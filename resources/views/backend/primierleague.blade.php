@@ -1,73 +1,77 @@
-
-
-
-
 @extends('backend.layoute.app')
 @section('content')
-<!-- Row -->
-<div class="row">
-    <!-- Datatables -->
+<div class="container">
+    <h2>INDEAN PREMIER LEAGUE 2022</h2>
 
-    <!-- DataTable with Hover -->
-    <div class="col-lg-12">
-        <div class="card mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables with Hover</h6>
-            </div>
-            <div class="table-responsive p-3">
-                <table class="table align-items-center table-flush table-hover" id="dataTableHover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Img</th>
-                            <th>Team</th>
-                            <th>Mat</th>
-                            <th>won</th>
-                            <th>Lost</th>
-                            <th>NR</th>
-                            <th>Pts</th>
-                            <th>NRR</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Img</th>
-                            <th>Team</th>
-                            <th>Mat</th>
-                            <th>won</th>
-                            <th>Lost</th>
-                            <th>NR</th>
-                            <th>Pts</th>
-                            <th>NRR</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
+    <div class="form-group">
+        <label for="title">Team Name</label>
+        <select id="country" class="form-control">
+            <option id="hide" value="0">Team Select</option>
+            @foreach ($tem as $tem)
+            <option value="{{ $tem->id }}">{{ $tem->tem_name }}</option>
+            @endforeach
+        </select>
+
+        <br />
 
 
-                        <tr>
-                            <td>Michael Bruce</td>
-                            <td>Javascript Developer</td>
-                            <td>Singapore</td>
-                            <td>29</td>
-                            <td>2011/06/27</td>
-                            <td>$183,000</td>
-                            <td>$183,000</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
-                            <td>$112,000</td>
-                            <td>$112,000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="form-group" id="match" style="display: none">
+            <label for="title">Match Select</label>
+            <select name="city" class="form-control">
+                <option value="">Match Select</option>
+            </select>
+
+            <br />
+
+            {{-- <select id="city" class="form-control">
+                <option value="">Select City</option>
+            </select> --}}
+
         </div>
+
     </div>
 </div>
-<!--Row-->
+@endsection
+@section('js_script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    jQuery(document).ready(function() {
+            $('#country').change(function(e) {
+                e.preventDefault();
+                var id = $(this).val();
+                $('#match').show();
+                // alert(id)
+
+                $.ajax({
+                    type: "get",
+                    url: "/leg/select/" + id,
+                    // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": id
+                    },
+                    // data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        // console.log(response);
+
+                        $('select[name="city"]').html('<option  value="">Match Select</option>')
+                        $.each(response, function(key, value) {
+                            $('select[name="city"]').append('<option value="' + key.id +
+                                '">' + value.team_name +  '</option>');
+
+                        });
+
+                    }
+                });
+            });
+
+
+
+        });
+</script>
 @endsection
