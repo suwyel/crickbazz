@@ -34,6 +34,7 @@ Route::get('/leg/select/{id}', [App\Http\Controllers\PremeierLeagueController::c
 Route::get('/point/table', [App\Http\Controllers\PremeierLeagueController::class, 'point_table']);
 Route::post('/point/save', [App\Http\Controllers\PremeierLeagueController::class, 'point_save']);
 Route::get('/point/view', [App\Http\Controllers\PremeierLeagueController::class, 'point_view']);
+Route::get('/add/select/{id}', [App\Http\Controllers\PremeierLeagueController::class, 'add_select']);
 
 
 Route::get('/getState/{id}', [PremeierLeagueController::class, 'getState']);

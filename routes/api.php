@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::middleware('apichick')->group(function () {
+
+    Route::get('league/view', 'App\Http\Controllers\ApiController@league_view');
+    Route::get('league/find/{id}', 'App\Http\Controllers\ApiController@league_find');
+    Route::delete('league/delete/{id}', 'App\Http\Controllers\ApiController@league_delete');
+    Route::put('league/edite/{id}', 'App\Http\Controllers\ApiController@league_edite');
+
+    // league add
+    Route::get('league', 'App\Http\Controllers\ApiController@league');
+
+
 });

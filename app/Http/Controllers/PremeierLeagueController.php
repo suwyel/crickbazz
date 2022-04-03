@@ -54,15 +54,21 @@ class PremeierLeagueController extends Controller
     }
     public function point_table()
     {
-        $pointtable = CricketLeagueList::all();
+        $pointtable = CricketLeague::all();
         return view('backend.addpoint', compact('pointtable'));
+    }
+    public function add_select(Request $Request, $id)
+    {
+        $list = CricketLeagueList::where('tem_id', $id)->get();
+        return $list;
+
     }
     public function point_save(Request $Request)
     {
 
         $validator = Validator::make($Request->all(), [
 
-            'team' => 'required',
+            // 'match' => 'required',
             'mat' => 'required',
             'won' => 'required',
             'lost' => 'required',
@@ -82,7 +88,7 @@ class PremeierLeagueController extends Controller
             }
         }
         $pointtable = new PoingTable();
-        $pointtable->team = $Request->team;
+        $pointtable->team = $Request->match;
         $pointtable->mat = $Request->mat;
         $pointtable->won = $Request->won;
         $pointtable->lost = $Request->lost;
@@ -119,6 +125,7 @@ class PremeierLeagueController extends Controller
         $point = PoingTable::get();
         return view('backend.point_view', compact('point'));
     }
+
 
 }
 // PoingTable 	img

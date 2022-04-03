@@ -4,8 +4,9 @@
         <div class=" ">
             <div class="">
                 <div class="card-body">
-                    <p>add point</p>
+                    {{-- <p class="bg-primary p-3 text-center text-white">add point</p> --}}
                     <form action="{{ url('/point/save') }}" method="post" autocomplete="off">
+                    <p class=" p-3 text-center text-black" style="background-color: #b17a7a26;">add point</p>
                         @csrf
                         {{-- @if ($success->any())
                             <div class="alert alert-danger">
@@ -22,11 +23,21 @@
                                     <label for="select2Single">Team</label>
                                     {{-- <option value="">select</option> --}}
                                     <select class="select2-single form-control " name="team" id="team" >
+                                        <option value="">select</option>
                                         @foreach ($pointtable as $pointtable)
-                                            <option value="{{  $pointtable->team_name }}">{{ $pointtable->team_name }}
+                                            {{-- <option value="">select</option> --}}
+                                            <option value="{{  $pointtable->id }}">{{ $pointtable->tem_name }}
                                             </option>
                                         @endforeach
 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="form-group ">
+                                    <label for="select2Single">match</label>
+                                   <select name="match" class="form-control" id="match">
+                                        <option value="">Match Select</option>
                                     </select>
                                 </div>
                             </div>
@@ -90,7 +101,7 @@
                                 @enderror --}}
                             </div>
 
-                            <div class="col-6 justify-content-center d-flex vh-auto align-items-center @error('mat') is-invalid @enderror">
+                            <div class="col-6  @error('mat') is-invalid @enderror">
                                 <div class=" buttom-0">
                                     <label for="select2Single">image</label>
 
@@ -101,8 +112,13 @@
                                 </div>
 
                             </div>
+                            <div class="col-6 justify-content-center d-flex vh-auto align-items-center @error('mat') is-invalid @enderror">
+                                <div class=" buttom-0">
+                                <button class="btn btn-lg  btn-primary">save</button>
+                                </div>
+
+                            </div>
                         </div>
-                        <button class="btn btn-lg  btn-primary">save</button>
 
 
 
@@ -116,4 +132,42 @@
             </div>
         </div>
 
+    @endsection
+    @section('js_script')
+<script>
+    jQuery(document).ready(function() {
+            $('#team').change(function(e) {
+                e.preventDefault();
+                var id = $(this).val();
+                // $('#match').show();
+                // alert(id)
+
+                $.ajax({
+                    type: "get",
+                    url: "/add/select/" + id,
+                    // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": id
+                    },
+                    // data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response);
+
+                        $('select[name="match"]').html('<option  value="">Match Select</option>')
+                        $.each(response, function(key, value) {
+                            $('select[name="match"]').append('<option value="' + value.team_name +
+                                '">' + value.team_name +  '</option>');
+
+                        });
+
+                    }
+                });
+            });
+
+
+
+        });
+</script>
     @endsection

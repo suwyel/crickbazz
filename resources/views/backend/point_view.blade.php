@@ -19,7 +19,7 @@
                             <th>id</th>
                             <th>img</th>
                             <th>team</th>
-                            <th>nat</th>
+                            <th>mat</th>
                             <th>won</th>
                             <th>nr </th>
                             <th>pts</th>
@@ -32,7 +32,7 @@
                            <th>id</th>
                            <th>img</th>
                             <th>team</th>
-                            <th>nat</th>
+                            <th>mat</th>
                             <th>won</th>
                             <th>nr </th>
                             <th>pts</th>
@@ -45,7 +45,7 @@
                             <td>{{$point->id}}</td>
                             <td><img src="{{ asset('public/uploads/images/users/'.$point->img) }}" alt=""></td>
                             <td>{{$point->team}}</td>
-                            <td>{{$point->nat}}</td>
+                            <td>{{$point->mat}}</td>
                             <td>{{$point->won}}</td>
                             <td>{{$point->nr}}</td>
                             <td>{{$point->pts}}</td>
@@ -70,5 +70,6 @@
       $('#dataTable').DataTable(); // ID From dataTable
       $('#dataTableHover').DataTable(); // ID From dataTable with Hover
     });
+
 </script>
 @endsection
